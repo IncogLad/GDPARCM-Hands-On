@@ -8,7 +8,7 @@ public:
 	typedef std::string String;
 
 	AGameObject(String name);
-	~AGameObject();
+	virtual ~AGameObject();
 
 	virtual void initialize();
 	virtual void processInput(sf::Event event);

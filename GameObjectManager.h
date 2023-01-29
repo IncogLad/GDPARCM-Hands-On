@@ -14,8 +14,9 @@ public:
 	static GameObjectManager* getInstance();
 
 	AGameObject* findObjectByName(AGameObject::String name);
-	GameObjectList getAllObjects();
-	int activeObjects();
+	GameObjectList getGameObjectList();
+
+	int getActiveObjectsCount();
 
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
