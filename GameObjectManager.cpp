@@ -36,32 +36,33 @@ int GameObjectManager::getActiveObjectsCount()
 
 void GameObjectManager::processInput(sf::Event event)
 {
-	for (auto gameObject : game_object_list_)
-	{
-		gameObject->processInput(event);
+	for (int i = 0; i < this->game_object_list_.size(); i++) {
+		if (this->game_object_list_[i]!= nullptr)
+			this->game_object_list_[i]->processInput(event);
 	}
 }
 
 void GameObjectManager::update(sf::Time deltaTime)
 {
-	for (auto gameObject : game_object_list_)
-	{
-		gameObject->update(deltaTime);
+	for (int i = 0; i < this->game_object_list_.size(); i++) {
+		if (this->game_object_list_[i] != nullptr)
+			this->game_object_list_[i]->update(deltaTime);
 	}
 }
 
 void GameObjectManager::draw(sf::RenderWindow* window)
 {
-	for (auto gameObject : game_object_list_)
-	{
-		gameObject->draw(window);
+	for (int i = 0; i < this->game_object_list_.size(); i++) {
+		if (this->game_object_list_[i] != nullptr)
+			this->game_object_list_[i]->draw(window);
 	}
 }
 
 void GameObjectManager::addObject(AGameObject* gameObject)
 {
-	game_object_list_.push_back(gameObject);
 	game_object_table_[gameObject->getName()] = gameObject;
+	game_object_list_.push_back(gameObject);
+	
 	game_object_table_[gameObject->getName()]->initialize();
 }
 

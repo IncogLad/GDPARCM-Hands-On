@@ -1,5 +1,7 @@
 #include "AGameObject.h"
 
+#include <iostream>
+
 AGameObject::AGameObject(String name)
 {
 	this->name = name;
@@ -24,6 +26,7 @@ void AGameObject::processInput(sf::Event event)
 void AGameObject::update(sf::Time deltaTime)
 {
 	//virtual
+	//std::cout << this->name <<std::endl;
 }
 
 void AGameObject::draw(sf::RenderWindow* targetWindow)

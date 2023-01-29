@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,15 +137,23 @@
     <ClCompile Include="AGameObject.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="IconObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StringUtils.cpp" />
+    <ClCompile Include="TextureDisplay.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="BGObject.h" />
+    <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="IconObject.h" />
+    <ClInclude Include="StringUtils.h" />
+    <ClInclude Include="TextureDisplay.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -4,6 +4,7 @@
 
 int main()
 {
+    sf::err().rdbuf(NULL);
     BaseWindow::getInstance()->Run();
 
 }
