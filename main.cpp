@@ -4,6 +4,6 @@
 
 int main()
 {
-    BaseWindow base_window;
-    base_window.Run();
+    BaseWindow::getInstance()->Run();
+
 }
