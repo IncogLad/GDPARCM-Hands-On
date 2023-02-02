@@ -27,7 +27,7 @@ void TextureDisplay::update(sf::Time deltaTime)
 	AGameObject::update(deltaTime);
 	this->ticks += BaseWindow::TIME_PER_FRAME.asMilliseconds();
 
-	if (this->ticks >= 20.0f) {
+	if (this->ticks >= 200.0f) {
 		if (static_cast<int>(this->iconList.size()) < TextureManager::getInstance()->streamingAssetCount)
 		{
 			TextureManager::getInstance()->loadSingleStreamAsset(static_cast<int>(this->iconList.size()));

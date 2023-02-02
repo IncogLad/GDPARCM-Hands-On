@@ -23,6 +23,7 @@ void BGObject::initialize()
 	//make BG height x k to emulate repeating BG.
 	this->sprite->setTextureRect(sf::IntRect(0, 0, BaseWindow::WINDOW_WIDTH, BaseWindow::WINDOW_HEIGHT * 8));
 	this->setPosition(0, -BaseWindow::WINDOW_HEIGHT * 7);
+
 }
 
 void BGObject::processInput(sf::Event event)
