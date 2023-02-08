@@ -1,9 +1,10 @@
 #pragma once
 #include "AGameObject.h"
+#include "IExecutionEvent.h"
 
 class IconObject;
 
-class TextureDisplay : public AGameObject
+class TextureDisplay : public AGameObject//, public IExecutionEvent
 {
 public:
 	TextureDisplay();

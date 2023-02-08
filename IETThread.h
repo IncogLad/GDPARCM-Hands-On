@@ -7,11 +7,11 @@ public:
 	IETThread();
 	~IETThread();
 
-	virtual void start();
+	void start();
+	static void sleep(int ms);
+
+protected:
 	virtual void run() = 0;
-
-public:
-
-	virtual void sleep(int ms);
+	
 };
 

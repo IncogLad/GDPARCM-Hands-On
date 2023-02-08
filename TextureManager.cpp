@@ -5,6 +5,8 @@
 #include <filesystem>
 
 #include <thread>
+
+#include "IETThread.h"
 //#include "IETThread.h"
 
 TextureManager* TextureManager::sharedInstance = nullptr;
@@ -43,8 +45,7 @@ void TextureManager::loadSingleStreamAsset(int index)
 	for ( auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		if (index == fileNum)
 		{
-			//simulate loading of very large file
-			//<code here for thread sleeping. Fill this up only when instructor told so.>
+			IETThread::sleep(1000);
 
 			this->instantiateAsTexture(entry.path().string(), entry.path().string(), true);
 
