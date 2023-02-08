@@ -7,6 +7,7 @@
 #include <thread>
 
 #include "IETThread.h"
+#include "StreamLoaderThread.h"
 //#include "IETThread.h"
 
 TextureManager* TextureManager::sharedInstance = nullptr;
@@ -38,21 +39,16 @@ void TextureManager::loadFromAssetList()
 	}
 }
 
-void TextureManager::loadSingleStreamAsset(int index)
+void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* i_execution_event)
 {
 	int fileNum = 0;
 
 	for ( auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		if (index == fileNum)
 		{
-			IETThread::sleep(1000);
+			StreamLoaderThread* stream_loader_thread = new StreamLoaderThread(entry.path().string(), i_execution_event);
+			stream_loader_thread->start();
 
-			this->instantiateAsTexture(entry.path().string(), entry.path().string(), true);
-
-			//<code here for loading asset>
-			//String assetName = "";
-
-			std::cout << "[TextureManager] Loaded streaming texture: " << entry.path().string() << std::endl;
 			break;
 		}
 

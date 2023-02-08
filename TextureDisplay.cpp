@@ -30,12 +30,16 @@ void TextureDisplay::update(sf::Time deltaTime)
 	if (this->ticks >= 200.0f) {
 		if (static_cast<int>(this->iconList.size()) < TextureManager::getInstance()->streamingAssetCount)
 		{
-			TextureManager::getInstance()->loadSingleStreamAsset(static_cast<int>(this->iconList.size()));
-			spawnObject();
+			TextureManager::getInstance()->loadSingleStreamAsset(static_cast<int>(this->iconList.size()), this);
 		}
 		this->ticks = 0.0f;
 	}
 	
+}
+
+void TextureDisplay::onFinishedExecution()
+{
+	spawnObject();
 }
 
 void TextureDisplay::spawnObject()

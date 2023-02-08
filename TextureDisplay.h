@@ -4,13 +4,14 @@
 
 class IconObject;
 
-class TextureDisplay : public AGameObject//, public IExecutionEvent
+class TextureDisplay : public AGameObject, public IExecutionEvent
 {
 public:
 	TextureDisplay();
 	void initialize() override;
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
+	void onFinishedExecution() override;
 
 private:
 	typedef std::vector<IconObject*> IconList;

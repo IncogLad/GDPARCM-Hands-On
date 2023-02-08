@@ -20,5 +20,15 @@ void StreamLoaderThread::run()
 	std::cout << "Running stream asset loader " << std::endl;
 
 	IETThread::sleep(100);
+	TextureManager::getInstance()->instantiateAsTexture(this->path, this->path, true);
+
+
+	//<code here for loading asset>
+	//String assetName = "";
+
+	std::cout << "[TextureManager] Loaded streaming texture: " << this->path << std::endl;
+
+	this->execution_event_->onFinishedExecution();
+	delete this;
 
 }
