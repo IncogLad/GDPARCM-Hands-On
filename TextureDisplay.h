@@ -28,5 +28,7 @@ private:
 	const int MAX_COLUMN = 28;
 	const int MAX_ROW = 22;
 
+	int numDisplayed = 0;
+
 	void spawnObject();
 };

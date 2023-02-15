@@ -27,11 +27,17 @@ void TextureDisplay::update(sf::Time deltaTime)
 	AGameObject::update(deltaTime);
 	this->ticks += BaseWindow::TIME_PER_FRAME.asMilliseconds();
 
-	if (this->ticks >= 200.0f) {
+	if (this->ticks >= 25.0f) {
+
+		
 		if (static_cast<int>(this->iconList.size()) < TextureManager::getInstance()->streamingAssetCount)
 		{
-			TextureManager::getInstance()->loadSingleStreamAsset(static_cast<int>(this->iconList.size()), this);
+			//TextureManager::getInstance()->loadSingleStreamAsset(static_cast<int>(this->iconList.size()), this);
+			TextureManager::getInstance()->loadSingleStreamAsset(numDisplayed, this);
+			numDisplayed++;
+
 		}
+		
 		this->ticks = 0.0f;
 	}
 	
@@ -50,10 +56,13 @@ void TextureDisplay::spawnObject()
 	this->iconList.push_back(iconObj);
 
 	//set position
-	int IMG_WIDTH = 68; int IMG_HEIGHT = 68;
+	//int IMG_WIDTH = 68; int IMG_HEIGHT = 68;
+	int IMG_WIDTH = 45; int IMG_HEIGHT = 45;
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
 	iconObj->setPosition(x, y);
+	//old pc values
+	iconObj->setScale(0.67, 0.67);
 
 	std::cout << "Set position: " << x << " " << y << std::endl;
 

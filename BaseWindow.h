@@ -13,8 +13,11 @@ public:
 	static BaseWindow* getInstance();
 
 	static const sf::Time TIME_PER_FRAME;
-	static const int WINDOW_HEIGHT = 1080;
-	static const int WINDOW_WIDTH = 1920;
+	/*static const int WINDOW_HEIGHT = 1080;
+	static const int WINDOW_WIDTH = 1920;*/
+
+	static const int WINDOW_HEIGHT = 720;
+	static const int WINDOW_WIDTH = 1280;
 
 	float getFPS();
 
