@@ -2,15 +2,18 @@
 
 #include <string>
 
-#include "IETThread.h"
+#include "IWorkerAction.h"
 #include "IExecutionEvent.h"
 
+class IETThread;
 
 class StreamLoaderThread :public IETThread
 {
 public:
 	StreamLoaderThread(std::string, IExecutionEvent*);
 	~StreamLoaderThread();
+
+	//void onStartTask() override;
 
 	void run() override;
 
