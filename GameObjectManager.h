@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <mutex>
 #include "AGameObject.h"
 
 typedef std::unordered_map<std::string, AGameObject*> GameObjectTable;
@@ -34,5 +35,7 @@ private:
 
 	GameObjectTable game_object_table_;
 	GameObjectList game_object_list_;
+
+	std::mutex guard; 
 
 };

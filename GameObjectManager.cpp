@@ -60,10 +60,14 @@ void GameObjectManager::draw(sf::RenderWindow* window)
 
 void GameObjectManager::addObject(AGameObject* gameObject)
 {
+	this->guard.lock();
+
 	game_object_table_[gameObject->getName()] = gameObject;
 	game_object_list_.push_back(gameObject);
 	
 	game_object_table_[gameObject->getName()]->initialize();
+
+	this->guard.unlock();
 }
 
 void GameObjectManager::deleteObject(AGameObject* gameObject)

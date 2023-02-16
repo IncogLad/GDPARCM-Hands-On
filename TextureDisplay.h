@@ -1,6 +1,7 @@
 #pragma once
 #include "AGameObject.h"
 #include "IExecutionEvent.h"
+#include <mutex>
 
 class IconObject;
 
@@ -27,6 +28,8 @@ private:
 
 	const int MAX_COLUMN = 28;
 	const int MAX_ROW = 22;
+
+	std::mutex guard;
 
 	int numDisplayed = 0;
 
