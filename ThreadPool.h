@@ -17,9 +17,9 @@ class ThreadPool : public IETThread, public IFinishedTask
 {
 private:
 	typedef std::string String;
-	typedef std::queue<PoolWorkerThread*> ThreadList;
+	typedef std::queue<PoolWorkerThread*> ThreadQueue;
 	typedef std::unordered_map<int, PoolWorkerThread*> ThreadTable;
-	typedef std::queue<IWorkerAction*> ActionList;
+	typedef std::queue<IWorkerAction*> ActionQueue;
 
 public:
 	ThreadPool(String name, int numWorkers);
@@ -41,8 +41,8 @@ private:
 	bool running = false;
 	int numWorkers = 0;
 	ThreadTable activeThreads;
-	ThreadList inactiveThreads;
-	ActionList pendingActions;
+	ThreadQueue inactiveThreads;
+	ActionQueue pendingActions;
 
 };
 

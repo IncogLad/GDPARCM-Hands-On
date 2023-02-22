@@ -2,6 +2,7 @@
 #include <unordered_map>
 
 #include "IExecutionEvent.h"
+#include "ThreadPool.h"
 #include "SFML/Graphics.hpp"
 
 class TextureManager
@@ -28,6 +29,7 @@ public:
 
 private:
 	TextureManager();
+	~TextureManager();
 	TextureManager(TextureManager const&) {};             // copy constructor is private
 	TextureManager& operator=(TextureManager const&) {};  // assignment operator is private
 	static TextureManager* sharedInstance;
@@ -38,6 +40,6 @@ private:
 
 	const std::string STREAMING_PATH = "Media/Streaming/";
 	
-
+	ThreadPool* threadPool;
 
 };

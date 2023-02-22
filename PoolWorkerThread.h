@@ -9,11 +9,10 @@ public:
 	PoolWorkerThread(int id, IFinishedTask* finishedTask);
 	~PoolWorkerThread();
 
-	//void onStartTask() override;
-
+	int getThreadID();
+	void assignTask(IWorkerAction* action);
 
 private:
-
 	void run() override;
 
 	int id;

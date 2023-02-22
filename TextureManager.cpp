@@ -6,9 +6,8 @@
 
 #include <thread>
 
-#include "IETThread.h"
 #include "StreamLoaderThread.h"
-//#include "IETThread.h"
+
 
 TextureManager* TextureManager::sharedInstance = nullptr;
 
@@ -22,6 +21,15 @@ TextureManager* TextureManager::getInstance()
 TextureManager::TextureManager()
 {
 	this->countStreamingAssets();
+
+	//init threadPool at the start
+	this->threadPool = new ThreadPool("threadPool", 100);
+	this->threadPool->startScheduler();
+}
+
+TextureManager::~TextureManager()
+{
+	this->threadPool->stopScheduler();
 }
 
 void TextureManager::loadFromAssetList()
@@ -47,7 +55,7 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* i_executi
 		if (index == fileNum)
 		{
 			StreamLoaderThread* stream_loader_thread = new StreamLoaderThread(entry.path().string(), i_execution_event);
-			stream_loader_thread->start();
+			this->threadPool->scheduleTask(stream_loader_thread);
 
 			break;
 		}

@@ -22,7 +22,7 @@ float BaseWindow::getFPS()
 	return this->fps;
 }
 
-BaseWindow::BaseWindow(): main_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Testing this on *OLD PC* Window", sf::Style::Close)
+BaseWindow::BaseWindow(): main_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Back to Laptop Window", sf::Style::Close)
 {
 	sharedInstance = this;
 	this->main_window.setFramerateLimit(60);
