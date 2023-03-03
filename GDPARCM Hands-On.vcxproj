@@ -108,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\include;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -126,7 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\include;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

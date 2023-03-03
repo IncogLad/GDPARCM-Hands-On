@@ -6,6 +6,7 @@
 #include "TextureDisplay.h"
 #include "TextureManager.h"
 
+
 const sf::Time BaseWindow::TIME_PER_FRAME = sf::seconds(1.f / 60.f);
 
 BaseWindow* BaseWindow::sharedInstance = nullptr;
