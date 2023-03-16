@@ -27,7 +27,7 @@ set(CANDLE_HEADERS
 	include/Candle/DirectedLight.hpp
 	include/Candle/geometry/Line.hpp
 	include/Candle/geometry/Polygon.hpp
-    include/Candle/geometry/Vector2.hpp
+    	include/Candle/geometry/Vector2.hpp
 	include/Candle/graphics/Color.hpp
 	include/Candle/graphics/VertexArray.hpp
 	include/Candle/Constants.hpp

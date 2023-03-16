@@ -48,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -70,6 +70,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -108,14 +114,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\include;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\lib;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\src;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\lib;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;sfml-audio-s-d.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -126,27 +132,39 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\include;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\include;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\include;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\lib;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Vincent\source\repos\GDPARCM Hands-On\Candle-master\src;D:\C++ Projects\GDPARCM-Hands-On\SFML-2.5.1\lib;C:\Users\Vincent\source\repos\GDPARCM Hands-On\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AGameObject.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="Candle-master\src\Color.cpp" />
+    <ClCompile Include="Candle-master\src\Constants.cpp" />
+    <ClCompile Include="Candle-master\src\DirectedLight.cpp" />
+    <ClCompile Include="Candle-master\src\LightingArea.cpp" />
+    <ClCompile Include="Candle-master\src\LightSource.cpp" />
+    <ClCompile Include="Candle-master\src\Line.cpp" />
+    <ClCompile Include="Candle-master\src\Polygon.cpp" />
+    <ClCompile Include="Candle-master\src\RadialLight.cpp" />
+    <ClCompile Include="Candle-master\src\VertexArray.cpp" />
+    <ClCompile Include="CandleLight.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="IconObject.cpp" />
     <ClCompile Include="IETThread.cpp" />
     <ClCompile Include="IExecutionEvent.cpp" />
     <ClCompile Include="IWorkerAction.cpp" />
+    <ClCompile Include="LoadingStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PoolWorkerThread.cpp" />
     <ClCompile Include="StreamLoaderThread.cpp" />
@@ -159,12 +177,14 @@
     <ClInclude Include="AGameObject.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="BGObject.h" />
+    <ClInclude Include="CandleLight.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="IconObject.h" />
     <ClInclude Include="IETThread.h" />
     <ClInclude Include="IExecutionEvent.h" />
     <ClInclude Include="IWorkerAction.h" />
+    <ClInclude Include="LoadingStatus.h" />
     <ClInclude Include="PoolWorkerThread.h" />
     <ClInclude Include="StreamLoaderThread.h" />
     <ClInclude Include="StringUtils.h" />

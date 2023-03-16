@@ -11,7 +11,7 @@ void IconObject::initialize()
 {
 	AGameObject::initialize();
 
-	std::cout << "Icon declared as " << this->getName() << "\n";
+	//std::cout << "Icon declared as " << this->getName() << "\n";
 
 	this->sprite = new sf::Sprite();
 	sf::Texture* texture = TextureManager::getInstance()->getStreamTextureFromList(this->textureIndex);

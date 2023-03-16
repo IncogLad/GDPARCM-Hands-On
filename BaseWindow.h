@@ -1,6 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <Candle/LightingArea.hpp>
+
+#include "CandleLight.h"
 
 class BaseWindow: sf::NonCopyable
 {
@@ -32,6 +35,9 @@ private:
 	void processEvents();
 	void update(sf::Time elapsedTime);
 
+	//temp vars
+	CandleLight* mouse_light;
 
+	candle::LightingArea fog;
 };
 

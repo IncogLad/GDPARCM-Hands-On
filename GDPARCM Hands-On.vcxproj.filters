@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Candle">
+      <UniqueIdentifier>{68549f23-d292-42cb-940d-0c584f723dfb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -63,6 +66,39 @@
     <ClCompile Include="ThreadPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CandleLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\Color.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\Constants.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\DirectedLight.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\LightingArea.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\LightSource.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\Line.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\Polygon.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\RadialLight.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle-master\src\VertexArray.cpp">
+      <Filter>Source Files\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingStatus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseWindow.h">
@@ -108,6 +144,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ThreadPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CandleLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingStatus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

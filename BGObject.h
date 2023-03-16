@@ -1,4 +1,6 @@
 #pragma once
+#include <Candle/LightingArea.hpp>
+
 #include "AGameObject.h"
 
 class BGObject : public AGameObject

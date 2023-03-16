@@ -6,6 +6,7 @@
 #include "GameObjectManager.h"
 #include "IconObject.h"
 #include "TextureManager.h"
+#include "LoadingStatus.h"
 
 TextureDisplay::TextureDisplay(): AGameObject("TEXTURE_DISPLAY")
 {
@@ -36,6 +37,10 @@ void TextureDisplay::update(sf::Time deltaTime)
 			TextureManager::getInstance()->loadSingleStreamAsset(numDisplayed, this);
 			numDisplayed++;
 
+		}
+		else
+		{
+			LoadingStatus::getInstance()->setLoadingStatus(true);
 		}
 		
 		this->ticks = 0.0f;
@@ -68,7 +73,7 @@ void TextureDisplay::spawnObject()
 	//old pc values
 	//iconObj->setScale(0.67, 0.67);
 
-	std::cout << "Set position: " << x << " " << y << std::endl;
+	//std::cout << "Set position: " << x << " " << y << std::endl;
 
 	this->columnGrid++;
 	if (this->columnGrid == this->MAX_COLUMN)
