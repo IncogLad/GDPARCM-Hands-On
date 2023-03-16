@@ -98,9 +98,9 @@ namespace candle{
             l_lightTextureFade.reset(nullptr);
             l_lightTexturePlain.reset(nullptr);
             l_texturesReady = false;
-            //#ifdef CANDLE_DEBUG
+            #ifdef CANDLE_DEBUG
             std::cout << "RadialLight: Textures destroyed" << std::endl;
-            //#endif
+            #endif
         }
         #endif
     }

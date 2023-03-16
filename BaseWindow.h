@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <Candle/LightingArea.hpp>
+#include <Candle/RadialLight.hpp>
 
-#include "CandleLight.h"
 
 class BaseWindow: sf::NonCopyable
 {
@@ -36,8 +36,7 @@ private:
 	void update(sf::Time elapsedTime);
 
 	//temp vars
-	CandleLight* mouse_light;
-
+	candle::RadialLight mouse_light;
 	candle::LightingArea fog;
 };
 

@@ -37,22 +37,22 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 
     //initialize GOs/Textures/...
 	BGObject* bg_object = new BGObject("mainBG");
-	GameObjectManager::getInstance()->addObject(bg_object);
+	GameObjectManager::getInstance()->addObject_BG(bg_object);
 
 	TextureDisplay* display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);
 
 	FPSCounter* fps_counter = new FPSCounter();
-	GameObjectManager::getInstance()->addObject(fps_counter);
+	GameObjectManager::getInstance()->addObject_UI(fps_counter);
 
-	mouse_light = new CandleLight("mouseLight");
+	mouse_light.setRange(150);
 	fog.setAreaColor(sf::Color::Black);
     
 }
 
 BaseWindow::~BaseWindow()
 {
-	delete this->mouse_light;
+	
 }
 
 void BaseWindow::Run()
@@ -79,14 +79,18 @@ void BaseWindow::render()
 {
 	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
 		this->fog.clear();
-		this->fog.draw(*mouse_light->mouseHoverLight);
+		this->fog.draw(mouse_light);
 		this->fog.display();
 	}
+
 	this->main_window.clear();
+	GameObjectManager::getInstance()->draw_BG(&this->main_window);
 	GameObjectManager::getInstance()->draw(&this->main_window);
 	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
 		this->main_window.draw(fog);
 	}
+
+	GameObjectManager::getInstance()->draw_UI(&this->main_window);
 	this->main_window.display();
 
 }
@@ -107,7 +111,7 @@ void BaseWindow::processEvents()
 			case sf::Event::MouseMoved:
 				sf::Vector2f mp(sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f,
 					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
-				mouse_light->mouseHoverLight->setPosition(mp);
+				mouse_light.setPosition(mp);
 				break;
 		}
 	}
