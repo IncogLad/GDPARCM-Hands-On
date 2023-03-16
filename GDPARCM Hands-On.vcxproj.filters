@@ -66,7 +66,7 @@
     <ClCompile Include="ThreadPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CandleLight.cpp">
+    <ClCompile Include="Fireflies.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Candle-master\src\Color.cpp">
@@ -97,6 +97,15 @@
       <Filter>Source Files\Candle</Filter>
     </ClCompile>
     <ClCompile Include="LoadingStatus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LightObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CenterLoadingLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ALightObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,10 +155,19 @@
     <ClInclude Include="ThreadPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CandleLight.h">
+    <ClInclude Include="Fireflies.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LoadingStatus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightObjectManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CenterLoadingLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ALightObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

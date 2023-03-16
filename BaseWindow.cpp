@@ -7,7 +7,7 @@
 #include "GameObjectManager.h"
 #include "TextureDisplay.h"
 #include "TextureManager.h"
-#include "CandleLight.h"
+#include "Fireflies.h"
 #include "LoadingStatus.h"
 
 

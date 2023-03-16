@@ -1,0 +1,1 @@
+#include "ALightObject.h"

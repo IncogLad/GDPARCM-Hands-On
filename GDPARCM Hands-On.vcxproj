@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AGameObject.cpp" />
+    <ClCompile Include="ALightObject.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="BGObject.cpp" />
     <ClCompile Include="Candle-master\src\Color.cpp" />
@@ -157,13 +158,15 @@
     <ClCompile Include="Candle-master\src\Polygon.cpp" />
     <ClCompile Include="Candle-master\src\RadialLight.cpp" />
     <ClCompile Include="Candle-master\src\VertexArray.cpp" />
-    <ClCompile Include="CandleLight.cpp" />
+    <ClCompile Include="CenterLoadingLight.cpp" />
+    <ClCompile Include="Fireflies.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="IconObject.cpp" />
     <ClCompile Include="IETThread.cpp" />
     <ClCompile Include="IExecutionEvent.cpp" />
     <ClCompile Include="IWorkerAction.cpp" />
+    <ClCompile Include="LightObjectManager.cpp" />
     <ClCompile Include="LoadingStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PoolWorkerThread.cpp" />
@@ -175,15 +178,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
+    <ClInclude Include="ALightObject.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="BGObject.h" />
-    <ClInclude Include="CandleLight.h" />
+    <ClInclude Include="CenterLoadingLight.h" />
+    <ClInclude Include="Fireflies.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="IconObject.h" />
     <ClInclude Include="IETThread.h" />
     <ClInclude Include="IExecutionEvent.h" />
     <ClInclude Include="IWorkerAction.h" />
+    <ClInclude Include="LightObjectManager.h" />
     <ClInclude Include="LoadingStatus.h" />
     <ClInclude Include="PoolWorkerThread.h" />
     <ClInclude Include="StreamLoaderThread.h" />

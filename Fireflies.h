@@ -1,15 +1,24 @@
 #pragma once
 #include "AGameObject.h"
+#include <vector> 
+#include "Candle/RadialLight.hpp"
 
-class BGObject : public AGameObject
+
+class Fireflies 
 {
 public:
-	BGObject(String name);
+	Fireflies(std::string name);
+	~Fireflies();
+
 	void initialize() override;
 	void processInput(sf::Event event)override;
 	void update(sf::Time deltaTime)override;
 
+	std::vector<candle::RadialLight> fireflyBunch;
+
 private:
+	
 	const float SPEED_MULTIPLIER = 3000.0f;
+
 };
 
