@@ -82,6 +82,7 @@ void TextureDisplay::spawnObject()
 		this->rowGrid++;
 	}
 
-	GameObjectManager::getInstance()->addObject(iconObj);
+	LoadingStatus::getInstance()->incrementItems();
+	//GameObjectManager::getInstance()->addObject(iconObj);
 
 }

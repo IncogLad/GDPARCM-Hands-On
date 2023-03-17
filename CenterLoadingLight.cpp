@@ -1,6 +1,7 @@
 #include "CenterLoadingLight.h"
 #include <iostream>
 #include "BaseWindow.h"
+#include "LoadingStatus.h"
 
 CenterLoadingLight::CenterLoadingLight(std::string name): ALightObject(name, false)
 {
@@ -17,10 +18,13 @@ void CenterLoadingLight::initialize()
 	std::cout << "Center Loading Light declared as " << this->getName() << "\n";
 
 	this->light->setRange(this->initial_Range);
+	this->light->setIntensity(11);
 	this->anim_current_Range = this->initial_Range;
 	this->actual_current_Range = this->initial_Range;
 
 	this->setPosition(BaseWindow::WINDOW_WIDTH / 2, BaseWindow::WINDOW_HEIGHT / 2);
+
+	
 	
 }
 
@@ -35,7 +39,12 @@ void CenterLoadingLight::update(sf::Time deltaTime)
 
 	animatingLightRange(deltaTime);
 
-	anim_current_Range = actual_current_Range;
+	this->completionPrecentage = LoadingStatus::getInstance()->getLoadedItemsAmount() / LoadingStatus::getInstance()->getMaxItemsAmount();
+	std::cout << this->completionPrecentage << std::endl;
+
+	this->actual_current_Range = this->completionPrecentage * this->max_Range;
+
+	this->anim_current_Range = this->actual_current_Range;
 
 }
 

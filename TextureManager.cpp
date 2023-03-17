@@ -6,6 +6,7 @@
 
 #include <thread>
 
+#include "LoadingStatus.h"
 #include "StreamLoaderThread.h"
 
 
@@ -23,7 +24,7 @@ TextureManager::TextureManager()
 	this->countStreamingAssets();
 
 	//init threadPool at the start
-	this->threadPool = new ThreadPool("threadPool", 40);
+	this->threadPool = new ThreadPool("threadPool", 10);
 	this->threadPool->startScheduler();
 }
 
@@ -63,6 +64,8 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* i_executi
 		fileNum++;
 		///std::cout << fileNum << std::endl;
 	}
+
+
 }
 
 sf::Texture* TextureManager::getFromTextureMap(const String assetName, int frameIndex)
@@ -103,7 +106,9 @@ void TextureManager::countStreamingAssets()
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		this->streamingAssetCount++;
 	}
-	//std::cout << "[TextureManager] Number of streaming assets: " << this->streamingAssetCount << std::endl;
+
+	std::cout << "[TextureManager] Number of streaming assets: " << this->streamingAssetCount << std::endl;
+	LoadingStatus::getInstance()->setMaxItems(this->streamingAssetCount);
 }
 
 void TextureManager::instantiateAsTexture(String path, String assetName, bool isStreaming)
