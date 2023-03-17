@@ -108,6 +108,9 @@
     <ClCompile Include="ALightObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoadingTips.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseWindow.h">
@@ -168,6 +171,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ALightObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingTips.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

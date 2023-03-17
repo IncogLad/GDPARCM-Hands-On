@@ -31,16 +31,22 @@ void TextureDisplay::update(sf::Time deltaTime)
 	if (this->ticks >= 10.0f) {
 
 		
-		if (static_cast<int>(this->iconList.size()) < TextureManager::getInstance()->streamingAssetCount)
+		if (static_cast<int>(this->iconList.size()) < LoadingStatus::getInstance()->getMaxItemsAmount())
 		{
 			//TextureManager::getInstance()->loadSingleStreamAsset(static_cast<int>(this->iconList.size()), this);
 			TextureManager::getInstance()->loadSingleStreamAsset(numDisplayed, this);
 			numDisplayed++;
 
 		}
-		else
+
+		
+		if (LoadingStatus::getInstance()->getLoadedItemsAmount() >= LoadingStatus::getInstance()->getMaxItemsAmount())
 		{
 			LoadingStatus::getInstance()->setLoadingStatus(true);
+			LoadingStatus::getInstance()->finishedOnce = true;
+
+
+			LoadingStatus::getInstance()->setMaxItems(10000);
 		}
 		
 		this->ticks = 0.0f;
@@ -59,7 +65,7 @@ void TextureDisplay::onFinishedExecution()
 
 void TextureDisplay::spawnObject()
 {
-	String objectName = "Icon_" + std::to_string(this->iconList.size());
+	String objectName = "Image_" + std::to_string(this->iconList.size());
 	auto* iconObj = new IconObject(objectName, static_cast<int>(this->iconList.size()));
 
 	this->iconList.push_back(iconObj);

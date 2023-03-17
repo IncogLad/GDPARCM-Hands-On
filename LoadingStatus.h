@@ -17,6 +17,8 @@ public:
 	float getLoadedItemsAmount();
 	float getMaxItemsAmount();
 
+	bool finishedOnce = false;
+
 private:
 	static LoadingStatus* sharedInstance;
 

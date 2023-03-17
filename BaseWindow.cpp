@@ -12,6 +12,7 @@
 #include "LightObjectManager.h"
 #include "CenterLoadingLight.h"
 #include "Fireflies.h"
+#include "LoadingTips.h"
 
 
 const sf::Time BaseWindow::TIME_PER_FRAME = sf::seconds(1.f / 60.f);
@@ -48,6 +49,9 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 	FPSCounter* fps_counter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject_UI(fps_counter);
 
+	LoadingTips* loading_tips = new LoadingTips();
+	GameObjectManager::getInstance()->addObject_UI(loading_tips);
+
 	CenterLoadingLight* loading_light = new CenterLoadingLight("center_light");
 	LightObjectManager::getInstance()->addObject(loading_light);
 
@@ -65,26 +69,40 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 	LightObjectManager::getInstance()->addObject(fireflies4);
 
 	Fireflies* fireflies5 = new Fireflies("fireflies5", sf::Color::White, sf::Vector2f(1764, 471));
-	//LightObjectManager::getInstance()->addObject(fireflies5);
+	LightObjectManager::getInstance()->addObject(fireflies5);
 
 	Fireflies* fireflies6 = new Fireflies("fireflies6", sf::Color::White, sf::Vector2f(1422, 208));
-	//LightObjectManager::getInstance()->addObject(fireflies6);
+	LightObjectManager::getInstance()->addObject(fireflies6);
 
 	Fireflies* fireflies7 = new Fireflies("fireflies7", sf::Color::Yellow, sf::Vector2f(932, 97));
-	//LightObjectManager::getInstance()->addObject(fireflies7);
+	LightObjectManager::getInstance()->addObject(fireflies7);
 
 	Fireflies* fireflies8 = new Fireflies("fireflies8", sf::Color::Red, sf::Vector2f(480, 225));
-	//LightObjectManager::getInstance()->addObject(fireflies8);
+	LightObjectManager::getInstance()->addObject(fireflies8);
 
 
-	this->mouse_light.setRange(150);
+	this->mouse_light.setRange(50);
 	this->fog.setAreaColor(sf::Color::Black);
-    
+
+	if (!music.openFromFile("Media/Audio/Horror_Ambience_BGM.ogg"))
+	{
+		return;
+	}
+
+	this->music.play();
+	this->music.setLoop(true);
+
+	if (!sfxFile.loadFromFile("Media/Audio/Bush_Hide_SFX.ogg"))
+	{
+		return;
+	}
+	this->sfxPlayer.setBuffer(sfxFile);
+
 }
 
 BaseWindow::~BaseWindow()
 {
-	
+	this->music.stop();
 }
 
 void BaseWindow::Run()
@@ -115,6 +133,22 @@ void BaseWindow::render()
 		LightObjectManager::getInstance()->drawOnFog(&this->fog);
 		this->fog.display();
 	}
+	else
+	{
+		if (LoadingStatus::getInstance()->finishedOnce)
+		{
+			this->music.stop();
+			if (!music.openFromFile("Media/Audio/Ending_BGM.ogg"))
+			{
+				return;
+			}
+
+			this->music.play();
+			this->music.setLoop(true);
+			LoadingStatus::getInstance()->finishedOnce = false;
+		}
+		
+	}
 
 	this->main_window.clear();
 	GameObjectManager::getInstance()->draw_BG(&this->main_window);
@@ -144,13 +178,17 @@ void BaseWindow::processEvents()
 			case sf::Event::Closed:
 				this->main_window.close();
 				break;
-			case sf::Event::MouseMoved:
-				sf::Vector2f mp(sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f,
-					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
-				this->mouse_light.setPosition(mp);
-
-				std::cout << sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f << " " <<sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f << std::endl;
+			case sf::Event::MouseButtonReleased:
+				GameObjectManager::getInstance()->processInput(event);
+				sfxPlayer.setVolume(15);
+				sfxPlayer.play();
 				break;
+			case sf::Event::MouseMoved:
+				sf::Vector2f mp(sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f,sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
+				this->mouse_light.setPosition(mp);
+				//std::cout << sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f << " " <<sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f << std::endl;
+				break;
+			
 		}
 	}
 }

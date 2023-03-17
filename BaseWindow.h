@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <Candle/LightingArea.hpp>
 #include <Candle/RadialLight.hpp>
@@ -38,5 +39,9 @@ private:
 	//temp vars
 	candle::RadialLight mouse_light;
 	candle::LightingArea fog;
+
+	sf::Music music;
+	sf::SoundBuffer sfxFile;
+	sf::Sound sfxPlayer;
 };
 

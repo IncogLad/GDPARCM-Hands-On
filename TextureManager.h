@@ -38,7 +38,7 @@ private:
 	TextureList base_texture_list_;
 	TextureList stream_texture_list_;
 
-	const std::string STREAMING_PATH = "Media/Streaming/";
+	const std::string STREAMING_PATH = "Media/ImageSequence/";
 	
 	ThreadPool* threadPool;
 

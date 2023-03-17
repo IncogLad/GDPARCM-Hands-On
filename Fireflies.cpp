@@ -30,6 +30,14 @@ void Fireflies::initialize()
 	candle::RadialLight* firefly4 = new candle::RadialLight();
 	firefly4->setPosition(28, -36);
 
+	candle::RadialLight* firefly5 = new candle::RadialLight();
+	firefly5->setPosition(28, -36);
+
+	this->fireflyBunch->push_back(firefly1);
+	this->fireflyBunch->push_back(firefly2);
+	this->fireflyBunch->push_back(firefly3);
+	this->fireflyBunch->push_back(firefly4);
+	this->fireflyBunch->push_back(firefly5);
 	this->fireflyBunch->push_back(firefly1);
 	this->fireflyBunch->push_back(firefly2);
 	this->fireflyBunch->push_back(firefly3);
@@ -55,7 +63,7 @@ void Fireflies::initialize()
 	std::vector<sf::Vector2f> f3 = { sf::Vector2f(30, 30) ,sf::Vector2f(30, 10) , sf::Vector2f(-20, -40), sf::Vector2f(50, 50) };
 	std::vector<sf::Vector2f> f4 = { sf::Vector2f(30, -30) ,sf::Vector2f(30, -10) , sf::Vector2f(50, -40), sf::Vector2f(-4, 23) };
 
-	fireflyPatrolRoutes = { f1,f2,f3,f4 };
+	fireflyPatrolRoutes = { f1,f2,f3,f4,f1,f2,f3,f4,f1 };
 	
 	for (int i = 0; i < this->currentRoute.size(); i++)
 	{
