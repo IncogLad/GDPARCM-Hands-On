@@ -9,6 +9,9 @@
 #include "TextureManager.h"
 #include "Fireflies.h"
 #include "LoadingStatus.h"
+#include "LightObjectManager.h"
+#include "CenterLoadingLight.h"
+#include "Fireflies.h"
 
 
 const sf::Time BaseWindow::TIME_PER_FRAME = sf::seconds(1.f / 60.f);
@@ -45,6 +48,9 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 	FPSCounter* fps_counter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject_UI(fps_counter);
 
+	CenterLoadingLight* loading_light = new CenterLoadingLight("center_light");
+	LightObjectManager::getInstance()->addObject(loading_light);
+
 	mouse_light.setRange(150);
 	fog.setAreaColor(sf::Color::Black);
     
@@ -80,15 +86,23 @@ void BaseWindow::render()
 	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
 		this->fog.clear();
 		this->fog.draw(mouse_light);
+		for(int i = 0; i < LightObjectManager::getInstance()->getLightObjectList().size(); i++)
+		{
+			if (LightObjectManager::getInstance()->getLightObjectList().at(i) != nullptr) {
+				this->fog.draw(*LightObjectManager::getInstance()->getLightObjectList().at(i)->getLight());
+			}
+		}
 		this->fog.display();
 	}
 
 	this->main_window.clear();
 	GameObjectManager::getInstance()->draw_BG(&this->main_window);
 	GameObjectManager::getInstance()->draw(&this->main_window);
+	
 	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
 		this->main_window.draw(fog);
 	}
+	//LightObjectManager::getInstance()->draw(&this->main_window);
 
 	GameObjectManager::getInstance()->draw_UI(&this->main_window);
 	this->main_window.display();
@@ -104,6 +118,7 @@ void BaseWindow::processEvents()
 		{
 			default: 
 				GameObjectManager::getInstance()->processInput(event);
+				LightObjectManager::getInstance()->processInput(event);
 				break;
 			case sf::Event::Closed:
 				this->main_window.close();
@@ -120,6 +135,6 @@ void BaseWindow::processEvents()
 void BaseWindow::update(sf::Time elapsedTime)
 {
 	GameObjectManager::getInstance()->update(elapsedTime);
-
+	LightObjectManager::getInstance()->update(elapsedTime);
 }
 

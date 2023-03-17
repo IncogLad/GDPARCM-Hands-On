@@ -3,6 +3,7 @@
 ALightObject::ALightObject(String name, bool isFirefly)
 {
 	this->light = new candle::RadialLight();
+	//this->light->setRange(150);
 	this->isFirefly = isFirefly;
 
 	if(this->isFirefly)

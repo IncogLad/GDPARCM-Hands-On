@@ -26,6 +26,7 @@ public:
 	virtual void setScale(float x, float y);
 
 	virtual candle::RadialLight* getLight();
+	std::vector<candle::RadialLight*>* getFireflyBunch();
 
 	bool isFirefly = false;
 
