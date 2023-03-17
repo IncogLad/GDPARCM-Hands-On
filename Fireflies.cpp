@@ -7,6 +7,7 @@ Fireflies::Fireflies(std::string name, sf::Color color, sf::Vector2f initPositio
 	this->isFirefly = true;
 
 	this->initPosition = initPosition;
+	this->fireflyBunch = new std::vector<candle::RadialLight*>();
 }
 
 Fireflies::~Fireflies()

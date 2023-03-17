@@ -58,6 +58,11 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 	CenterLoadingLight* loading_light4 = new CenterLoadingLight("center_light4", false);
 	LightObjectManager::getInstance()->addObject(loading_light4);
 	*/
+
+	Fireflies* fireflies1 = new Fireflies("fireflies1", sf::Color::Green, sf::Vector2f(183, 476));
+	LightObjectManager::getInstance()->addObject(fireflies1);
+
+
 	this->mouse_light.setRange(150);
 	this->fog.setAreaColor(sf::Color::Black);
     
@@ -93,12 +98,7 @@ void BaseWindow::render()
 	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
 		this->fog.clear();
 		this->fog.draw(this->mouse_light);
-		for(int i = 0; i < LightObjectManager::getInstance()->getLightObjectList().size(); i++)
-		{
-			if (LightObjectManager::getInstance()->getLightObjectList().at(i) != nullptr) {
-				this->fog.draw(*LightObjectManager::getInstance()->getLightObjectList().at(i)->getLight());
-			}
-		}
+		LightObjectManager::getInstance()->drawOnFog(&this->fog);
 		this->fog.display();
 	}
 
@@ -134,6 +134,9 @@ void BaseWindow::processEvents()
 				sf::Vector2f mp(sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f,
 					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
 				this->mouse_light.setPosition(mp);
+
+				std::cout << sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f << " " <<
+					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f << std::endl;
 				break;
 		}
 	}

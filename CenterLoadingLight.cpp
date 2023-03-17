@@ -99,7 +99,7 @@ void CenterLoadingLight::animatingLightRange(sf::Time deltaTime)
 	}
 	
 	
-	std::cout << currentIntensity << std::endl;
+	//std::cout << currentIntensity << std::endl;
 	this->light->setRange(anim_current_Range);
 	this->light->setIntensity(currentIntensity);
 	lowerlimit = actual_current_Range - 20.f;

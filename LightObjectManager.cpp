@@ -59,6 +59,21 @@ void LightObjectManager::draw(sf::RenderWindow* window)
 	}
 }
 
+void LightObjectManager::drawOnFog(candle::LightingArea* fog)
+{
+	for (int i = 0; i < this->game_object_list_.size(); i++) {
+		if (this->game_object_list_[i] != nullptr)
+			fog->draw(*this->game_object_list_[i]->getLight());
+
+		if (this->game_object_list_[i]->isFirefly)
+		{
+			for (int j = 0; j < this->game_object_list_.size(); j++) {
+				fog->draw(*this->game_object_list_[i]->getFireflyBunch()->at(j));
+			}
+		}
+	}
+}
+
 void LightObjectManager::addObject(ALightObject* gameObject)
 {
 	game_object_table_[gameObject->getName()] = gameObject;

@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "ALightObject.h"
+#include "Candle/LightingArea.hpp"
 
 typedef std::unordered_map<std::string, ALightObject*> LightObjectTable;
 typedef std::vector<ALightObject*> LightObjectList;
@@ -22,6 +23,7 @@ public:
 	void update(sf::Time deltaTime);
 
 	void draw(sf::RenderWindow* window);
+	void drawOnFog(candle::LightingArea* fog);
 	
 	void addObject(ALightObject* gameObject);
 

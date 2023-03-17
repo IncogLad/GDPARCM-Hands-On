@@ -75,7 +75,7 @@ void ALightObject::setPosition(float x, float y)
 	{
 		for (int i = 0; i < this->fireflyBunch->size(); i++)
 		{
-			//this->fireflyBunch->at(i);
+			this->fireflyBunch->at(i)->setPosition(this->posX + this->fireflyBunch->at(i)->getPosition().x, this->posY + this->fireflyBunch->at(i)->getPosition().y);
 		}
 	}
 	
