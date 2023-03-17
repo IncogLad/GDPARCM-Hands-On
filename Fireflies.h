@@ -7,18 +7,24 @@
 class Fireflies : public ALightObject
 {
 public:
-	Fireflies(std::string name, sf::Color color);
+	Fireflies(std::string name, sf::Color color, sf::Vector2f initPosition);
 	~Fireflies();
 
 	void initialize() override;
 	void processInput(sf::Event event)override;
 	void update(sf::Time deltaTime)override;
 
+
 private:
 
 	std::vector<candle::RadialLight*>* fireflyBunch;
-	const float SPEED_MULTIPLIER = 3000.0f;
+	const float SPEED_MULTIPLIER = 20.0f;
+
+	std::vector<std::vector<sf::Vector2f>> fireflyPatrolRoutes;
+	std::vector<int> currentRoute;
 
 	sf::Color color = sf::Color::White;
+
+	sf::Vector2f initPosition;
 };
 
