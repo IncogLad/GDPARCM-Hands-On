@@ -2,8 +2,9 @@
 #include <iostream>
 #include "BaseWindow.h"
 
-CenterLoadingLight::CenterLoadingLight(std::string name): ALightObject(name)
+CenterLoadingLight::CenterLoadingLight(std::string name): ALightObject(name, false)
 {
+	
 }
 
 CenterLoadingLight::~CenterLoadingLight()
@@ -33,6 +34,8 @@ void CenterLoadingLight::update(sf::Time deltaTime)
 	ALightObject::update(deltaTime);
 
 	animatingLightRange(deltaTime);
+
+	anim_current_Range = actual_current_Range;
 
 }
 

@@ -3,7 +3,8 @@
 ALightObject::ALightObject(String name, bool isFirefly)
 {
 	this->light = new candle::RadialLight();
-	//this->light->setRange(150);
+	this->name = name;
+	
 	this->isFirefly = isFirefly;
 
 	if(this->isFirefly)
@@ -14,7 +15,7 @@ ALightObject::ALightObject(String name, bool isFirefly)
 
 ALightObject::~ALightObject()
 {
-	delete this->light;
+	//delete this->light;
 }
 
 void ALightObject::initialize()
@@ -42,7 +43,7 @@ void ALightObject::update(sf::Time deltaTime)
 
 void ALightObject::draw(sf::RenderWindow* targetWindow)
 {
-	if (this->light != nullptr) {
+	
 		this->light->setPosition(this->posX, this->posY);
 		this->light->setScale(this->scaleX, this->scaleY);
 		targetWindow->draw(*this->light);
@@ -53,8 +54,8 @@ void ALightObject::draw(sf::RenderWindow* targetWindow)
 				targetWindow->draw(*this->fireflyBunch->at(i));
 			}
 		}
-		
-	}
+
+	
 
 }
 
@@ -68,17 +69,16 @@ void ALightObject::setPosition(float x, float y)
 	this->posX = x;
 	this->posY = y;
 
-	if (this->light != nullptr)
+	
+	this->light->setPosition(this->posX, this->posY);
+	if (this->fireflyBunch)
 	{
-		this->light->setPosition(this->posX, this->posY);
-		if (this->fireflyBunch)
+		for (int i = 0; i < this->fireflyBunch->size(); i++)
 		{
-			for (int i = 0; i < this->fireflyBunch->size(); i++)
-			{
-				//this->fireflyBunch->at(i);
-			}
+			//this->fireflyBunch->at(i);
 		}
 	}
+	
 
 }
 
@@ -87,10 +87,8 @@ void ALightObject::setScale(float x, float y)
 	this->scaleX = x;
 	this->scaleY = y;
 
-	if (this->light != nullptr)
-	{
-		this->light->setScale(this->scaleX, this->scaleY);
-	}
+	this->light->setScale(this->scaleX, this->scaleY);
+	
 
 }
 
@@ -98,6 +96,7 @@ candle::RadialLight* ALightObject::getLight()
 {
 	return this->light;
 }
+
 
 std::vector<candle::RadialLight*>* ALightObject::getFireflyBunch()
 {

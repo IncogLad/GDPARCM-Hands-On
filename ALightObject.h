@@ -25,15 +25,18 @@ public:
 	virtual void setPosition(float x, float y);
 	virtual void setScale(float x, float y);
 
-	virtual candle::RadialLight* getLight();
+	candle::RadialLight* getLight();
 	std::vector<candle::RadialLight*>* getFireflyBunch();
 
 	bool isFirefly = false;
+	
 
 protected:
 	String name;
-	candle::RadialLight* light;
+	
 	std::vector<candle::RadialLight*>* fireflyBunch;
+
+	candle::RadialLight* light;
 
 	float posX = 0.0f;
 	float posY = 0.0f;

@@ -50,9 +50,9 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 
 	CenterLoadingLight* loading_light = new CenterLoadingLight("center_light");
 	LightObjectManager::getInstance()->addObject(loading_light);
-
-	mouse_light.setRange(150);
-	fog.setAreaColor(sf::Color::Black);
+	
+	this->mouse_light.setRange(150);
+	this->fog.setAreaColor(sf::Color::Black);
     
 }
 
@@ -85,7 +85,7 @@ void BaseWindow::render()
 {
 	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
 		this->fog.clear();
-		this->fog.draw(mouse_light);
+		this->fog.draw(this->mouse_light);
 		for(int i = 0; i < LightObjectManager::getInstance()->getLightObjectList().size(); i++)
 		{
 			if (LightObjectManager::getInstance()->getLightObjectList().at(i) != nullptr) {
@@ -126,7 +126,7 @@ void BaseWindow::processEvents()
 			case sf::Event::MouseMoved:
 				sf::Vector2f mp(sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f,
 					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
-				mouse_light.setPosition(mp);
+				this->mouse_light.setPosition(mp);
 				break;
 		}
 	}
@@ -136,5 +136,6 @@ void BaseWindow::update(sf::Time elapsedTime)
 {
 	GameObjectManager::getInstance()->update(elapsedTime);
 	LightObjectManager::getInstance()->update(elapsedTime);
+	
 }
 

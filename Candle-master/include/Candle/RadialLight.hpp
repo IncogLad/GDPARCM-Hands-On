@@ -9,7 +9,7 @@
 
 #define RADIAL_LIGHT_FIX
 //#define CANDLE_DEBUG
-
+#include <iostream>
 #include "Candle/LightSource.hpp"
 #include "Candle/graphics/VertexArray.hpp"
 
@@ -44,38 +44,7 @@ namespace candle{
         void draw(sf::RenderTarget& t, sf::RenderStates st) const override;
         void resetColor() override;
 
-        void initializeTextures() {
-#ifdef CANDLE_DEBUG
-            std::cout << "RadialLight: InitializeTextures" << std::endl;
-#endif
-            int points = 100;
-
-            l_lightTextureFade.reset(new sf::RenderTexture);
-            l_lightTexturePlain.reset(new sf::RenderTexture);
-            l_lightTextureFade->create(BASE_RADIUS * 2 + 2, BASE_RADIUS * 2 + 2);
-            l_lightTexturePlain->create(BASE_RADIUS * 2 + 2, BASE_RADIUS * 2 + 2);
-
-            sf::VertexArray lightShape(sf::TriangleFan, points + 2);
-            float step = sfu::PI * 2.f / points;
-            lightShape[0].position = { BASE_RADIUS + 1, BASE_RADIUS + 1 };
-            for (int i = 1; i < points + 2; i++) {
-                lightShape[i].position = {
-                    (std::sin(step * (i)) + 1) * BASE_RADIUS + 1,
-                    (std::cos(step * (i)) + 1) * BASE_RADIUS + 1
-                };
-                lightShape[i].color.a = 0;
-            }
-            l_lightTextureFade->clear(sf::Color::Transparent);
-            l_lightTextureFade->draw(lightShape);
-            l_lightTextureFade->display();
-            l_lightTextureFade->setSmooth(true);
-
-            sfu::setColor(lightShape, sf::Color::White);
-            l_lightTexturePlain->clear(sf::Color::Transparent);
-            l_lightTexturePlain->draw(lightShape);
-            l_lightTexturePlain->display();
-            l_lightTexturePlain->setSmooth(true);
-        }
+        void initializeTextures();
 
     public:
         

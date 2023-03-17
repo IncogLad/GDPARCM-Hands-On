@@ -15,7 +15,7 @@ public:
 private:
 	const float SPEED_MULTIPLIER = 2.0f;
 
-	const float initial_Range = 150.f;
+	const float initial_Range = 10.f;
 	float actual_current_Range = 0;
 	float anim_current_Range = 0;
 	const float max_Range = BaseWindow::WINDOW_WIDTH;
