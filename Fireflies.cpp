@@ -1,8 +1,9 @@
 #include "Fireflies.h"
 
-Fireflies::Fireflies(std::string name): ALightObject(name)
+Fireflies::Fireflies(std::string name, sf::Color color): ALightObject(name)
 {
-	
+	this->name = name;
+	this->color = color;
 }
 
 Fireflies::~Fireflies()

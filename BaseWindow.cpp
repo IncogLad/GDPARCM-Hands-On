@@ -50,7 +50,14 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 
 	CenterLoadingLight* loading_light = new CenterLoadingLight("center_light");
 	LightObjectManager::getInstance()->addObject(loading_light);
-	
+
+	/*CenterLoadingLight* loading_light2 = new CenterLoadingLight("center_light2", false);
+	LightObjectManager::getInstance()->addObject(loading_light2);
+	CenterLoadingLight* loading_light3 = new CenterLoadingLight("center_light3", false);
+	LightObjectManager::getInstance()->addObject(loading_light3);
+	CenterLoadingLight* loading_light4 = new CenterLoadingLight("center_light4", false);
+	LightObjectManager::getInstance()->addObject(loading_light4);
+	*/
 	this->mouse_light.setRange(150);
 	this->fog.setAreaColor(sf::Color::Black);
     

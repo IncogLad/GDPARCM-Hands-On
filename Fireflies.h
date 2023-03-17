@@ -7,7 +7,7 @@
 class Fireflies : public ALightObject
 {
 public:
-	Fireflies(std::string name);
+	Fireflies(std::string name, sf::Color color);
 	~Fireflies();
 
 	void initialize() override;
@@ -19,5 +19,6 @@ private:
 	std::vector<candle::RadialLight*>* fireflyBunch;
 	const float SPEED_MULTIPLIER = 3000.0f;
 
+	sf::Color color = sf::Color::White;
 };
 

@@ -5,7 +5,7 @@
 class CenterLoadingLight : public ALightObject
 {
 public:
-	CenterLoadingLight(std::string name);
+	CenterLoadingLight(std::string name, bool animating = true);
 	~CenterLoadingLight();
 
 	void initialize() override;
@@ -13,9 +13,11 @@ public:
 	void update(sf::Time deltaTime)override;
 
 private:
-	const float SPEED_MULTIPLIER = 299.0f;
+	bool animating = true;
 
-	const float initial_Range = 30.f;
+	const float SPEED_MULTIPLIER = 20.0f;
+
+	float initial_Range = 30.f;
 
 	float completionPrecentage = 0;
 
@@ -28,6 +30,12 @@ private:
 	bool glowBig = false;
 	float lowerlimit = actual_current_Range - 20.f;
 	float upperlimit = actual_current_Range + 25.f;
+
+	//for intensity animation
+	float ticks = 0;
+	float currentIntensity = 0.01f;
+	float max_ticks = 1.5f;
+	bool increasing = true;
 
 
 	void animatingLightRange(sf::Time deltaTime);
