@@ -83,6 +83,7 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 
 	this->mouse_light.setRange(50);
 	this->fog.setAreaColor(sf::Color::Black);
+	
 
 	if (!music.openFromFile("Media/Audio/Horror_Ambience_BGM.ogg"))
 	{
@@ -135,6 +136,7 @@ void BaseWindow::render()
 	}
 	else
 	{
+
 		if (LoadingStatus::getInstance()->finishedOnce)
 		{
 			this->music.stop();
