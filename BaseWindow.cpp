@@ -51,16 +51,30 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 	CenterLoadingLight* loading_light = new CenterLoadingLight("center_light");
 	LightObjectManager::getInstance()->addObject(loading_light);
 
-	/*CenterLoadingLight* loading_light2 = new CenterLoadingLight("center_light2", false);
-	LightObjectManager::getInstance()->addObject(loading_light2);
-	CenterLoadingLight* loading_light3 = new CenterLoadingLight("center_light3", false);
-	LightObjectManager::getInstance()->addObject(loading_light3);
-	CenterLoadingLight* loading_light4 = new CenterLoadingLight("center_light4", false);
-	LightObjectManager::getInstance()->addObject(loading_light4);
-	*/
-
+	
 	Fireflies* fireflies1 = new Fireflies("fireflies1", sf::Color::Green, sf::Vector2f(183, 476));
 	LightObjectManager::getInstance()->addObject(fireflies1);
+
+	Fireflies* fireflies2 = new Fireflies("fireflies2", sf::Color::Magenta, sf::Vector2f(397, 757));
+	LightObjectManager::getInstance()->addObject(fireflies2);
+
+	Fireflies* fireflies3 = new Fireflies("fireflies3", sf::Color::Blue, sf::Vector2f(920, 964));
+	LightObjectManager::getInstance()->addObject(fireflies3);
+
+	Fireflies* fireflies4 = new Fireflies("fireflies4", sf::Color::Cyan, sf::Vector2f(1469, 762));
+	LightObjectManager::getInstance()->addObject(fireflies4);
+
+	Fireflies* fireflies5 = new Fireflies("fireflies5", sf::Color::White, sf::Vector2f(1764, 471));
+	//LightObjectManager::getInstance()->addObject(fireflies5);
+
+	Fireflies* fireflies6 = new Fireflies("fireflies6", sf::Color::White, sf::Vector2f(1422, 208));
+	//LightObjectManager::getInstance()->addObject(fireflies6);
+
+	Fireflies* fireflies7 = new Fireflies("fireflies7", sf::Color::Yellow, sf::Vector2f(932, 97));
+	//LightObjectManager::getInstance()->addObject(fireflies7);
+
+	Fireflies* fireflies8 = new Fireflies("fireflies8", sf::Color::Red, sf::Vector2f(480, 225));
+	//LightObjectManager::getInstance()->addObject(fireflies8);
 
 
 	this->mouse_light.setRange(150);
@@ -135,7 +149,7 @@ void BaseWindow::processEvents()
 					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
 				this->mouse_light.setPosition(mp);
 
-				//std::cout << sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f << " " <<sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f << std::endl;
+				std::cout << sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f << " " <<sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f << std::endl;
 				break;
 		}
 	}

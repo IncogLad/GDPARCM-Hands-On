@@ -18,10 +18,10 @@ public:
 private:
 
 	std::vector<candle::RadialLight*>* fireflyBunch;
-	const float SPEED_MULTIPLIER = 20.0f;
+	const float SPEED_MULTIPLIER = 200.0f;
 
 	std::vector<std::vector<sf::Vector2f>> fireflyPatrolRoutes;
-	std::vector<int> currentRoute = {0, 0 ,0};
+	std::vector<int> currentRoute = {0, 0 ,0, 0};
 
 	sf::Color color = sf::Color::White;
 

@@ -92,7 +92,7 @@ void CenterLoadingLight::animatingLightRange(sf::Time deltaTime)
 	else
 	{
 		this->currentIntensity -= deltaTime.asSeconds() * 1;
-		if (currentIntensity <= 0.25f)
+		if (currentIntensity <= 0.7f)
 		{
 			increasing = true;
 		}

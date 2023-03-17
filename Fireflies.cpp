@@ -19,17 +19,21 @@ void Fireflies::initialize()
 	ALightObject::initialize();
 
 	candle::RadialLight* firefly1 = new candle::RadialLight();
-	firefly1->setPosition(-2, 2);
+	firefly1->setPosition(-27, 22);
 
 	candle::RadialLight* firefly2 = new candle::RadialLight();
-	firefly1->setPosition(1, 4);
+	firefly2->setPosition(13, 49);
 
 	candle::RadialLight* firefly3 = new candle::RadialLight();
-	firefly1->setPosition(-2, -3);
+	firefly3->setPosition(-28, -36);
+
+	candle::RadialLight* firefly4 = new candle::RadialLight();
+	firefly4->setPosition(28, -36);
 
 	this->fireflyBunch->push_back(firefly1);
 	this->fireflyBunch->push_back(firefly2);
 	this->fireflyBunch->push_back(firefly3);
+	this->fireflyBunch->push_back(firefly4);
 
 	this->initFireflies(this->fireflyBunch);
 
@@ -43,30 +47,16 @@ void Fireflies::initialize()
 	{
 		this->fireflyBunch->at(i)->setColor(this->color);
 		this->fireflyBunch->at(i)->setIntensity(1);
-		this->fireflyBunch->at(i)->setRange(20);
+		this->fireflyBunch->at(i)->setRange(10);
 	}
 
-	std::vector<sf::Vector2f> f1 = { sf::Vector2f(3, 3) ,sf::Vector2f(-3, 5) , sf::Vector2f(2, -4) };
-	std::vector<sf::Vector2f> f2 = { sf::Vector2f(-3, -3) ,sf::Vector2f(-3, 5) , sf::Vector2f(2, -4), sf::Vector2f(0, 2), sf::Vector2f(-4, 0) };
-	std::vector<sf::Vector2f> f3 = { sf::Vector2f(1, 2) ,sf::Vector2f(-3, -1) , sf::Vector2f(-2, -4), sf::Vector2f(1, 1) };
+	std::vector<sf::Vector2f> f1 = { sf::Vector2f(30, 30) ,sf::Vector2f(-30, 50) , sf::Vector2f(20, -40) };
+	std::vector<sf::Vector2f> f2 = { sf::Vector2f(-30, -30) ,sf::Vector2f(-30, 50) , sf::Vector2f(20, -40), sf::Vector2f(0, 20), sf::Vector2f(-40, 0) };
+	std::vector<sf::Vector2f> f3 = { sf::Vector2f(30, 30) ,sf::Vector2f(30, 10) , sf::Vector2f(-20, -40), sf::Vector2f(50, 50) };
+	std::vector<sf::Vector2f> f4 = { sf::Vector2f(30, -30) ,sf::Vector2f(30, -10) , sf::Vector2f(50, -40), sf::Vector2f(-4, 23) };
 
-	fireflyPatrolRoutes = { f1,f2,f3 };
-
-	/*fireflyPatrolRoutes[0][0] = sf::Vector2f(3, 3);
-	fireflyPatrolRoutes[0][1] = sf::Vector2f(-3, 5);
-	fireflyPatrolRoutes[0][2] = sf::Vector2f(2, -4);
-
-	fireflyPatrolRoutes[1][0] = sf::Vector2f(-3, -3);
-	fireflyPatrolRoutes[1][1] = sf::Vector2f(-3, 5);
-	fireflyPatrolRoutes[1][2] = sf::Vector2f(2, -4);
-	fireflyPatrolRoutes[1][3] = sf::Vector2f(0, 2);
-	fireflyPatrolRoutes[1][4] = sf::Vector2f(-4, 0);
-
-	fireflyPatrolRoutes[2][0] = sf::Vector2f(1, 2);
-	fireflyPatrolRoutes[2][1] = sf::Vector2f(-3, -1);
-	fireflyPatrolRoutes[2][2] = sf::Vector2f(-2, -4);
-	fireflyPatrolRoutes[2][3] = sf::Vector2f(1, 1);*/
-
+	fireflyPatrolRoutes = { f1,f2,f3,f4 };
+	
 	for (int i = 0; i < this->currentRoute.size(); i++)
 	{
 		this->currentRoute.at(i) = 0;
@@ -88,25 +78,25 @@ void Fireflies::update(sf::Time deltaTime)
 		bool xArrived = false;
 		bool yArrived = false;
 
-		if (this->fireflyBunch->at(i)->getPosition().x < fireflyPatrolRoutes[i][currentRoute[i]].x)
+		if (this->fireflyBunch->at(i)->getPosition().x < fireflyPatrolRoutes[i][currentRoute[i]].x + this->light->getPosition().x)
 		{
-			float increment = this->fireflyBunch->at(i)->getPosition().x + deltaTime.asSeconds();
+			float increment = this->fireflyBunch->at(i)->getPosition().x + deltaTime.asSeconds() * SPEED_MULTIPLIER;
 			this->fireflyBunch->at(i)->setPosition(increment, this->fireflyBunch->at(i)->getPosition().y);
 		}
 		else
 		{
-			float increment = this->fireflyBunch->at(i)->getPosition().x - deltaTime.asSeconds();
+			float increment = this->fireflyBunch->at(i)->getPosition().x - deltaTime.asSeconds() * SPEED_MULTIPLIER;
 			this->fireflyBunch->at(i)->setPosition(increment, this->fireflyBunch->at(i)->getPosition().y);
 		}
 
-		if (this->fireflyBunch->at(i)->getPosition().y < fireflyPatrolRoutes[i][currentRoute[i]].y)
+		if (this->fireflyBunch->at(i)->getPosition().y < fireflyPatrolRoutes[i][currentRoute[i]].y + this->light->getPosition().y)
 		{
-			float increment = this->fireflyBunch->at(i)->getPosition().y + deltaTime.asSeconds();
+			float increment = this->fireflyBunch->at(i)->getPosition().y + deltaTime.asSeconds() * SPEED_MULTIPLIER;
 			this->fireflyBunch->at(i)->setPosition(this->fireflyBunch->at(i)->getPosition().x, increment);
 		}
 		else
 		{
-			float increment = this->fireflyBunch->at(i)->getPosition().y - deltaTime.asSeconds();
+			float increment = this->fireflyBunch->at(i)->getPosition().y - deltaTime.asSeconds() * SPEED_MULTIPLIER;
 			this->fireflyBunch->at(i)->setPosition(this->fireflyBunch->at(i)->getPosition().x, increment);
 		}
 
@@ -122,7 +112,7 @@ void Fireflies::update(sf::Time deltaTime)
 			yArrived = true;
 		}
 
-		std::cout << i << ": " << this->fireflyBunch->at(i)->getPosition().x << " " << this->fireflyBunch->at(i)->getPosition().y << std::endl;
+		//std::cout << i << ": " << this->fireflyBunch->at(i)->getPosition().x << " " << this->fireflyBunch->at(i)->getPosition().y << std::endl;
 
 		if (xArrived && yArrived)
 		{
