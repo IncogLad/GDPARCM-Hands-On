@@ -42,9 +42,17 @@ void Fireflies::initialize()
 	for (int i = 0; i < this->fireflyBunch->size(); i++)
 	{
 		this->fireflyBunch->at(i)->setColor(this->color);
+		this->fireflyBunch->at(i)->setIntensity(1);
+		this->fireflyBunch->at(i)->setRange(20);
 	}
 
-	fireflyPatrolRoutes[0][0] = sf::Vector2f(3, 3);
+	std::vector<sf::Vector2f> f1 = { sf::Vector2f(3, 3) ,sf::Vector2f(-3, 5) , sf::Vector2f(2, -4) };
+	std::vector<sf::Vector2f> f2 = { sf::Vector2f(-3, -3) ,sf::Vector2f(-3, 5) , sf::Vector2f(2, -4), sf::Vector2f(0, 2), sf::Vector2f(-4, 0) };
+	std::vector<sf::Vector2f> f3 = { sf::Vector2f(1, 2) ,sf::Vector2f(-3, -1) , sf::Vector2f(-2, -4), sf::Vector2f(1, 1) };
+
+	fireflyPatrolRoutes = { f1,f2,f3 };
+
+	/*fireflyPatrolRoutes[0][0] = sf::Vector2f(3, 3);
 	fireflyPatrolRoutes[0][1] = sf::Vector2f(-3, 5);
 	fireflyPatrolRoutes[0][2] = sf::Vector2f(2, -4);
 
@@ -57,7 +65,7 @@ void Fireflies::initialize()
 	fireflyPatrolRoutes[2][0] = sf::Vector2f(1, 2);
 	fireflyPatrolRoutes[2][1] = sf::Vector2f(-3, -1);
 	fireflyPatrolRoutes[2][2] = sf::Vector2f(-2, -4);
-	fireflyPatrolRoutes[2][3] = sf::Vector2f(1, 1);
+	fireflyPatrolRoutes[2][3] = sf::Vector2f(1, 1);*/
 
 	for (int i = 0; i < this->currentRoute.size(); i++)
 	{
@@ -114,9 +122,16 @@ void Fireflies::update(sf::Time deltaTime)
 			yArrived = true;
 		}
 
+		std::cout << i << ": " << this->fireflyBunch->at(i)->getPosition().x << " " << this->fireflyBunch->at(i)->getPosition().y << std::endl;
+
 		if (xArrived && yArrived)
 		{
 			currentRoute[i]++;
+		}
+
+		if (currentRoute[i] >= fireflyPatrolRoutes[i].size())
+		{
+			currentRoute[i] = 0;
 		}
 		
 	}

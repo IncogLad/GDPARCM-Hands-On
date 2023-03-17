@@ -135,8 +135,7 @@ void BaseWindow::processEvents()
 					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
 				this->mouse_light.setPosition(mp);
 
-				std::cout << sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f << " " <<
-					sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f << std::endl;
+				//std::cout << sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f << " " <<sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f << std::endl;
 				break;
 		}
 	}

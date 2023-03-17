@@ -21,7 +21,7 @@ private:
 	const float SPEED_MULTIPLIER = 20.0f;
 
 	std::vector<std::vector<sf::Vector2f>> fireflyPatrolRoutes;
-	std::vector<int> currentRoute;
+	std::vector<int> currentRoute = {0, 0 ,0};
 
 	sf::Color color = sf::Color::White;
 
