@@ -108,25 +108,6 @@ void TextureDisplay::spawnObject()
 
 	this->iconList.push_back(iconObj);
 
-	//set position
-	int IMG_WIDTH = 68; int IMG_HEIGHT = 68;
-	//int IMG_WIDTH = 45; int IMG_HEIGHT = 45;
-	float x = this->columnGrid * IMG_WIDTH;
-	float y = this->rowGrid * IMG_HEIGHT;
-	//iconObj->setPosition(x, y);
-	//old pc values
-	//iconObj->setScale(0.67, 0.67);
-
-	//std::cout << "Set position: " << x << " " << y << std::endl;
-
-	/*this->columnGrid++;
-	if (this->columnGrid == this->MAX_COLUMN)
-	{
-		this->columnGrid = 0;
-		this->rowGrid++;
-	}*/
-
 	LoadingStatus::getInstance()->incrementItems();
-	//GameObjectManager::getInstance()->addObject(iconObj);
 
 }

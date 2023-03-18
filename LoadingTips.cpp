@@ -59,7 +59,7 @@ void LoadingTips::initialize()
 	this->HintsList->push_back("Deep in the darkness lurks the monster that haunts you.");
 	this->HintsList->push_back("Use your environment to your advantage. Hide behind bushes and lay down lures.");
 	this->HintsList->push_back("Reach the center of the maze to find the truth.");
-	this->HintsList->push_back("Check out our game in GGJ 2023! :D");
+	this->HintsList->push_back("Check out our game at GGJ 2023! :D");
 	this->HintsList->push_back(" ");
 
 	std::cout << "LoadingTexts declared as " << this->getName() << "\n";

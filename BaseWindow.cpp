@@ -145,7 +145,7 @@ void BaseWindow::render()
 			{
 				return;
 			}
-
+			this->music.setVolume(50);
 			this->music.play();
 			this->music.setLoop(true);
 			LoadingStatus::getInstance()->finishedOnce = false;
@@ -181,8 +181,11 @@ void BaseWindow::processEvents()
 				break;
 			case sf::Event::MouseButtonReleased:
 				GameObjectManager::getInstance()->processInput(event);
-				sfxPlayer.setVolume(15);
-				sfxPlayer.play();
+				if (!LoadingStatus::getInstance()->getLoadingStatus())
+				{
+					sfxPlayer.setVolume(15);
+					sfxPlayer.play();
+				}
 				break;
 			case sf::Event::MouseMoved:
 				sf::Vector2f mp(sf::Mouse::getPosition().x - this->main_window.getPosition().x - 5.f,sf::Mouse::getPosition().y - this->main_window.getPosition().y - 25.f);
