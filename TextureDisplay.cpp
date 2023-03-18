@@ -95,13 +95,11 @@ void TextureDisplay::update(sf::Time deltaTime)
 void TextureDisplay::onFinishedExecution()
 {
 	guard.lock();
-
-	spawnObject();
-	
+	loadedObject();
 	guard.unlock();
 }
 
-void TextureDisplay::spawnObject()
+void TextureDisplay::loadedObject()
 {
 	String objectName = "Image_" + std::to_string(this->iconList.size());
 	auto* iconObj = new IconObject(objectName, static_cast<int>(this->iconList.size()));
