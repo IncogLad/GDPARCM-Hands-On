@@ -45,6 +45,11 @@ void TextureDisplay::update(sf::Time deltaTime)
 			LoadingStatus::getInstance()->setLoadingStatus(true);
 			LoadingStatus::getInstance()->finishedOnce = true;
 
+			for(int i = 0; i < iconList.size(); i++)
+			{
+				GameObjectManager::getInstance()->addObject(iconList[i]);
+			}
+
 
 			LoadingStatus::getInstance()->setMaxItems(10000);
 		}
@@ -75,18 +80,18 @@ void TextureDisplay::spawnObject()
 	//int IMG_WIDTH = 45; int IMG_HEIGHT = 45;
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
-	iconObj->setPosition(x, y);
+	//iconObj->setPosition(x, y);
 	//old pc values
 	//iconObj->setScale(0.67, 0.67);
 
 	//std::cout << "Set position: " << x << " " << y << std::endl;
 
-	this->columnGrid++;
+	/*this->columnGrid++;
 	if (this->columnGrid == this->MAX_COLUMN)
 	{
 		this->columnGrid = 0;
 		this->rowGrid++;
-	}
+	}*/
 
 	LoadingStatus::getInstance()->incrementItems();
 	//GameObjectManager::getInstance()->addObject(iconObj);
