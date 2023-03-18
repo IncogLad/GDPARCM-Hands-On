@@ -99,6 +99,8 @@ fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(WINDOW_WIDTH
 	}
 	this->sfxPlayer.setBuffer(sfxFile);
 
+	//for the anim later
+	this->fadeIn = 0;
 }
 
 BaseWindow::~BaseWindow()
@@ -128,15 +130,14 @@ void BaseWindow::Run()
 
 void BaseWindow::render()
 {
+	this->fog.clear();
+	
 	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
-		this->fog.clear();
 		this->fog.draw(this->mouse_light);
 		LightObjectManager::getInstance()->drawOnFog(&this->fog);
-		this->fog.display();
 	}
 	else
 	{
-
 		if (LoadingStatus::getInstance()->finishedOnce)
 		{
 			this->music.stop();
@@ -150,17 +151,15 @@ void BaseWindow::render()
 			LoadingStatus::getInstance()->finishedOnce = false;
 		}
 		
+
 	}
+
+	this->fog.display();
 
 	this->main_window.clear();
 	GameObjectManager::getInstance()->draw_BG(&this->main_window);
 	GameObjectManager::getInstance()->draw(&this->main_window);
-	
-	if (!LoadingStatus::getInstance()->getLoadingStatus()) {
-		this->main_window.draw(fog);
-	}
-	//LightObjectManager::getInstance()->draw(&this->main_window);
-
+	this->main_window.draw(fog);
 	GameObjectManager::getInstance()->draw_UI(&this->main_window);
 	this->main_window.display();
 
@@ -197,8 +196,57 @@ void BaseWindow::processEvents()
 
 void BaseWindow::update(sf::Time elapsedTime)
 {
+	if (displayTitle)
+	{
+		fadeToBlack(elapsedTime);
+	}
+
 	GameObjectManager::getInstance()->update(elapsedTime);
 	LightObjectManager::getInstance()->update(elapsedTime);
+
+	if (LoadingStatus::getInstance()->getLoadingStatus()) {
+		fadeToNormal(elapsedTime);
+	}
+}
+
+void BaseWindow::fadeToBlack(sf::Time elapsedTime)
+{
+	m_ticks += elapsedTime.asSeconds() * 0.75f;
+
+	if (fadeIn == 1) {
+		this->fog.setAreaOpacity(m_ticks);
+		if (m_ticks >= MAX_TICKS)
+		{
+			this->fog.setAreaOpacity(1);
+			fadeIn = 0;
+			m_ticks = 0;
+			if (displayTitle)
+			{
+				fadeDone = true;
+				l_ticks = 1;
+			}
+		}
+	}
+}
+
+void BaseWindow::fadeToNormal(sf::Time elapsedTime)
+{
+	l_ticks -= elapsedTime.asSeconds() * 0.75f;
 	
+
+	if (fadeIn == 0) {
+		this->fog.setAreaOpacity(l_ticks);
+		if (l_ticks <= LEAST_TICKS)
+		{
+			fadeIn = 1;
+			l_ticks = 1;
+			if (displayTitle)
+			{
+				fadeIn = -1;
+			}
+		}
+	}
+	
+
 }
 

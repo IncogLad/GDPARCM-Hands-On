@@ -67,6 +67,11 @@ void AGameObject::setScale(float x, float y)
 
 }
 
+sf::Sprite* AGameObject::getSprite()
+{
+	return this->sprite;
+}
+
 sf::FloatRect AGameObject::getLocalBounds()
 {
 	return this->sprite->getLocalBounds();

@@ -21,9 +21,6 @@ void BGObject::initialize()
 	this->sprite->setTexture(*texture);
 	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
 
-	std::cout << BaseWindow::WINDOW_WIDTH / textureSize.x << " ";
-	std::cout << BaseWindow::WINDOW_HEIGHT / textureSize.y << "\n";
-
 	this->setScale(static_cast<float>(BaseWindow::WINDOW_WIDTH) / static_cast<float>(textureSize.x),
 		static_cast<float>(BaseWindow::WINDOW_HEIGHT) / static_cast<float>(textureSize.y));
 	

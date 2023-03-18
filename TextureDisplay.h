@@ -32,6 +32,11 @@ private:
 	std::mutex guard;
 
 	int numDisplayed = 0;
+	float displayTicks = 0;
+
+	int displayIndex = 0;
+
+	bool startDisplay = false;
 
 	void spawnObject();
 };

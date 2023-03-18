@@ -44,18 +44,51 @@ void TextureDisplay::update(sf::Time deltaTime)
 		{
 			LoadingStatus::getInstance()->setLoadingStatus(true);
 			LoadingStatus::getInstance()->finishedOnce = true;
-
-			for(int i = 0; i < iconList.size(); i++)
-			{
-				GameObjectManager::getInstance()->addObject(iconList[i]);
-			}
-
+			this->startDisplay = true;
 
 			LoadingStatus::getInstance()->setMaxItems(10000);
 		}
 		
 		this->ticks = 0.0f;
 	}
+
+	this->displayTicks += deltaTime.asSeconds();
+
+	if (startDisplay)
+	{
+
+		if (this->displayTicks >= 0.1f) 
+		{
+			if (displayIndex < iconList.size()-1)
+			{
+				GameObjectManager::getInstance()->addObject(iconList[displayIndex]);
+				sf::Vector2u textureSize = iconList[displayIndex]->getSprite()->getTexture()->getSize();
+
+				iconList[displayIndex]->setScale(static_cast<float>(BaseWindow::WINDOW_WIDTH) / static_cast<float>(textureSize.x),
+					static_cast<float>(BaseWindow::WINDOW_HEIGHT) / static_cast<float>(textureSize.y));
+				displayIndex++;
+			}
+			else
+			{
+				BaseWindow::getInstance()->displayTitle = true;
+				if (BaseWindow::getInstance()->fadeDone)
+				{
+					GameObjectManager::getInstance()->addObject(iconList[iconList.size() - 1]);
+					sf::Vector2u textureSize = iconList[displayIndex]->getSprite()->getTexture()->getSize();
+
+					iconList[displayIndex]->setScale(static_cast<float>(BaseWindow::WINDOW_WIDTH) / static_cast<float>(textureSize.x),
+						static_cast<float>(BaseWindow::WINDOW_HEIGHT) / static_cast<float>(textureSize.y));
+					startDisplay = false;
+				}
+				
+			}
+			this->displayTicks = 0;
+			
+		}
+
+	}
+
+
 	
 }
 

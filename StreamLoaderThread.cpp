@@ -19,7 +19,7 @@ void StreamLoaderThread::onStartTask()
 {
 	//std::cout << "Running stream asset loader " << std::endl;
 
-	IETThread::sleep(5000);
+	IETThread::sleep(1000);
 	TextureManager::getInstance()->instantiateAsTexture(this->path, this->path, true);
 	//IETThread::sleep(1000);
 

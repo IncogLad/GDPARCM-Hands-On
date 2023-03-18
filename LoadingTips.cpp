@@ -1,6 +1,7 @@
 #include "LoadingTips.h"
 
 #include "BaseWindow.h"
+#include "LoadingStatus.h"
 
 LoadingTips::LoadingTips() :AGameObject("TipsObject")
 {
@@ -92,11 +93,15 @@ void LoadingTips::draw(sf::RenderWindow* targetWindow)
 {
 	AGameObject::draw(targetWindow);
 
-	if (this->TitleMechanic != nullptr)
-		targetWindow->draw(*this->TitleMechanic);
+	if (!LoadingStatus::getInstance()->getLoadingStatus())
+	{
+		if (this->TitleMechanic != nullptr)
+			targetWindow->draw(*this->TitleMechanic);
 
-	if (this->HintsMechanic != nullptr)
-		targetWindow->draw(*this->HintsMechanic);
+		if (this->HintsMechanic != nullptr)
+			targetWindow->draw(*this->HintsMechanic);
+	}
+	
 
 }
 
