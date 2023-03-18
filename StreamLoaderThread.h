@@ -1,18 +1,19 @@
 #pragma once
 
 #include <string>
-
-#include "IETThread.h"
 #include "IExecutionEvent.h"
+#include "IWorkerAction.h"
 
+class IWorkerAction;
 
-class StreamLoaderThread :public IETThread
+class StreamLoaderThread :public IWorkerAction
 {
 public:
 	StreamLoaderThread(std::string, IExecutionEvent*);
 	~StreamLoaderThread();
 
-	void run() override;
+	void onStartTask() override;
+
 
 private:
 	std::string path;

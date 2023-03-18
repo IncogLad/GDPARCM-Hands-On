@@ -22,7 +22,8 @@ public:
 
 	virtual void setPosition(float x, float y);
 	virtual void setScale(float x, float y);
-	
+
+	sf::Sprite* getSprite();
 
 protected:
 	String name;

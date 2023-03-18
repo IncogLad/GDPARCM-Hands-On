@@ -1,17 +1,19 @@
 #pragma once
 #include "AGameObject.h"
 #include "IExecutionEvent.h"
+#include <mutex>
 
 class IconObject;
 
-class TextureDisplay : public AGameObject//, public IExecutionEvent
+class TextureDisplay : public AGameObject, public IExecutionEvent
 {
 public:
 	TextureDisplay();
 	void initialize() override;
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
-
+	void onFinishedExecution() override;
+	
 private:
 	typedef std::vector<IconObject*> IconList;
 	IconList iconList;
@@ -26,6 +28,15 @@ private:
 
 	const int MAX_COLUMN = 28;
 	const int MAX_ROW = 22;
+
+	std::mutex guard;
+
+	int numDisplayed = 0;
+	float displayTicks = 0;
+
+	int displayIndex = 0;
+
+	bool startDisplay = false;
 
 	void spawnObject();
 };

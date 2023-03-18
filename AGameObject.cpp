@@ -26,7 +26,6 @@ void AGameObject::processInput(sf::Event event)
 void AGameObject::update(sf::Time deltaTime)
 {
 	//virtual
-	//std::cout << this->name <<std::endl;
 }
 
 void AGameObject::draw(sf::RenderWindow* targetWindow)
@@ -66,6 +65,11 @@ void AGameObject::setScale(float x, float y)
 		this->sprite->setScale(this->scaleX, this->scaleY);
 	}
 
+}
+
+sf::Sprite* AGameObject::getSprite()
+{
+	return this->sprite;
 }
 
 sf::FloatRect AGameObject::getLocalBounds()

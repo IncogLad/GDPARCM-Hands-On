@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <mutex>
 #include "AGameObject.h"
 
 typedef std::unordered_map<std::string, AGameObject*> GameObjectTable;
@@ -20,10 +21,19 @@ public:
 
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
+
 	void draw(sf::RenderWindow* window);
+	void draw_UI(sf::RenderWindow* window);
+	void draw_BG(sf::RenderWindow* window);
 
 	void addObject(AGameObject* gameObject);
+	void addObject_UI(AGameObject* gameObject);
+	void addObject_BG(AGameObject* gameObject);
+
 	void deleteObject(AGameObject* gameObject);
+	void deleteObject_UI(AGameObject* gameObject);
+	void deleteObject_BG(AGameObject* gameObject);
+
 	void deleteObjectByName(AGameObject::String name);
 
 private:
@@ -33,6 +43,12 @@ private:
 	static GameObjectManager* sharedInstance;
 
 	GameObjectTable game_object_table_;
+
 	GameObjectList game_object_list_;
+	GameObjectList UI_game_object_list_;
+	GameObjectList BG_game_object_list_;
+
+
+	std::mutex guard; 
 
 };

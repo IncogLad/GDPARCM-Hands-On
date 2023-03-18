@@ -16,7 +16,7 @@ FPSCounter::~FPSCounter()
 void FPSCounter::initialize()
 {
 	sf::Font* font = new sf::Font();
-	font->loadFromFile("Media/Fonts/Sansation.ttf");
+	font->loadFromFile("Media/Fonts/RestlessSoulBB-Bold.otf");
 
 	this->statsText = new sf::Text();
 	this->statsText->setFont(*font);
@@ -50,8 +50,8 @@ void FPSCounter::updateFPS(sf::Time elapsedTime)
 	int curr_fps;
 	this->updateTime += elapsedTime;
 
-	if (this->updateTime >= sf::seconds(0.25f)) {
-		curr_fps = floor(BaseWindow::getInstance()->getFPS());  // NOLINT(clang-diagnostic-float-conversion)
+	if (this->updateTime >= sf::seconds(0.5f)) {
+		curr_fps = ceil(BaseWindow::getInstance()->getFPS());  // NOLINT(clang-diagnostic-float-conversion)
 		if (curr_fps > 60)
 		{
 			curr_fps = 60;

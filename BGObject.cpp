@@ -5,6 +5,7 @@
 
 BGObject::BGObject(std::string name) :AGameObject(name)
 {
+	
 }
 
 void BGObject::initialize()
@@ -14,15 +15,15 @@ void BGObject::initialize()
 
 	//assign texture
 	this->sprite = new sf::Sprite();
-	this->texture = TextureManager::getInstance()->getFromTextureMap("Desert", 0);
+	this->texture = TextureManager::getInstance()->getFromTextureMap("InteractiveBG", 0);
 
-	texture->setRepeated(true);
+	//texture->setRepeated(true);
 	this->sprite->setTexture(*texture);
 	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
 
-	//make BG height x k to emulate repeating BG.
-	this->sprite->setTextureRect(sf::IntRect(0, 0, BaseWindow::WINDOW_WIDTH, BaseWindow::WINDOW_HEIGHT * 8));
-	this->setPosition(0, -BaseWindow::WINDOW_HEIGHT * 7);
+	this->setScale(static_cast<float>(BaseWindow::WINDOW_WIDTH) / static_cast<float>(textureSize.x),
+		static_cast<float>(BaseWindow::WINDOW_HEIGHT) / static_cast<float>(textureSize.y));
+	
 
 }
 
@@ -35,6 +36,7 @@ void BGObject::update(sf::Time deltaTime)
 {
 	AGameObject::update(deltaTime);
 	//make BG scroll slowly
+#ifdef OLD_BG
 	sf::Vector2f position = this->getPosition();
 	position.y += this->SPEED_MULTIPLIER * deltaTime.asSeconds();
 	this->setPosition(position.x, position.y);
@@ -44,6 +46,7 @@ void BGObject::update(sf::Time deltaTime)
 		//reset position
 		this->setPosition(0, -BaseWindow::WINDOW_HEIGHT * 7);
 	}
-	
+#endif
+
 
 }
