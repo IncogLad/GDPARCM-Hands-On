@@ -51,7 +51,7 @@ void FPSCounter::updateFPS(sf::Time elapsedTime)
 	this->updateTime += elapsedTime;
 
 	if (this->updateTime >= sf::seconds(0.5f)) {
-		curr_fps = floor(BaseWindow::getInstance()->getFPS());  // NOLINT(clang-diagnostic-float-conversion)
+		curr_fps = ceil(BaseWindow::getInstance()->getFPS());  // NOLINT(clang-diagnostic-float-conversion)
 		if (curr_fps > 60)
 		{
 			curr_fps = 60;
