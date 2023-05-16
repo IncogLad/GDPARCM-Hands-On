@@ -38,5 +38,5 @@ private:
 
 	bool startDisplay = false;
 
-	void spawnObject();
+	void loadedObject();
 };

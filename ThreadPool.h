@@ -25,18 +25,14 @@ private:
 public:
 	ThreadPool(String name, int numWorkers);
 	~ThreadPool();
-
-
 	void startScheduler();
 	void stopScheduler();
 	void scheduleTask(IWorkerAction* action);
 
 
 private:
-
 	void run() override;
 	void onFinished(int threadID) override;
-
 
 	String name;
 	bool running = false;
